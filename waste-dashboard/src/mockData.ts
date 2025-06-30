@@ -1,0 +1,161 @@
+import type { BinStatus } from "./types";
+
+export const mockData = {
+  bins: [
+    {
+      id: "bin-001",
+      location: {
+        name: "Earl G. Graves School of Business",
+        lat: 39.3452,
+        lng: -76.584,
+      },
+      fullness: 65,
+      lastUpdated: "2025-06-18T08:00:00Z",
+      status: "warning" as BinStatus,
+    },
+    {
+      id: "bin-002",
+      location: { name: "Tyler Hall", lat: 39.3449, lng: -76.5825 },
+      fullness: 95,
+      lastUpdated: "2025-06-18T08:05:00Z",
+      status: "critical" as BinStatus,
+    },
+    {
+      id: "bin-003",
+      location: {
+        name: "Murphy Fine Arts Center",
+        lat: 39.3438,
+        lng: -76.5817,
+      },
+      fullness: 25,
+      lastUpdated: "2025-06-18T08:10:00Z",
+      status: "normal" as BinStatus,
+    },
+    {
+      id: "bin-004",
+      location: { name: "Montebello Complex", lat: 39.346, lng: -76.5805 },
+      fullness: 70,
+      lastUpdated: "2025-06-18T08:15:00Z",
+      status: "warning" as BinStatus,
+    },
+    {
+      id: "bin-005",
+      location: { name: "Martin D. Jenkins Hall", lat: 39.3454, lng: -76.5819 },
+      fullness: 98,
+      lastUpdated: "2025-06-18T08:20:00Z",
+      status: "critical" as BinStatus,
+    },
+    {
+      id: "bin-006",
+      location: { name: "Cummings House", lat: 39.3464, lng: -76.5836 },
+      fullness: 12,
+      lastUpdated: "2025-06-18T08:25:00Z",
+      status: "normal" as BinStatus,
+    },
+    {
+      id: "bin-007",
+      location: { name: "Morgan View Apartments", lat: 39.3429, lng: -76.5828 },
+      fullness: 80,
+      lastUpdated: "2025-06-18T08:30:00Z",
+      status: "warning" as BinStatus,
+    },
+    {
+      id: "bin-008",
+      location: { name: "Thurgood Marshall Hall", lat: 39.3446, lng: -76.5845 },
+      fullness: 91,
+      lastUpdated: "2025-06-18T08:35:00Z",
+      status: "critical" as BinStatus,
+    },
+    {
+      id: "bin-009",
+      location: { name: "Hill Field House", lat: 39.3435, lng: -76.5809 },
+      fullness: 34,
+      lastUpdated: "2025-06-18T08:40:00Z",
+      status: "normal" as BinStatus,
+    },
+    {
+      id: "bin-010",
+      location: {
+        name: "New Communications Center",
+        lat: 39.3456,
+        lng: -76.582,
+      },
+      fullness: 87,
+      lastUpdated: "2025-06-18T08:45:00Z",
+      status: "critical" as BinStatus,
+    },
+    {
+      id: "bin-011",
+      location: { name: "Rawlings Dining Hall", lat: 39.3442, lng: -76.5833 },
+      fullness: 55,
+      lastUpdated: "2025-06-18T08:50:00Z",
+      status: "warning" as BinStatus,
+    },
+    {
+      id: "bin-012",
+      location: { name: "Harper Tubman House", lat: 39.3451, lng: -76.5839 },
+      fullness: 20,
+      lastUpdated: "2025-06-18T08:55:00Z",
+      status: "normal" as BinStatus,
+    },
+    {
+      id: "bin-013",
+      location: {
+        name: "Washington Service Center",
+        lat: 39.3437,
+        lng: -76.5826,
+      },
+      fullness: 44,
+      lastUpdated: "2025-06-18T09:00:00Z",
+      status: "normal" as BinStatus,
+    },
+    {
+      id: "bin-014",
+      location: { name: "Student Center", lat: 39.3445, lng: -76.5823 },
+      fullness: 77,
+      lastUpdated: "2025-06-18T09:05:00Z",
+      status: "warning" as BinStatus,
+    },
+    {
+      id: "bin-015",
+      location: { name: "University Chapel", lat: 39.3458, lng: -76.5815 },
+      fullness: 99,
+      lastUpdated: "2025-06-18T09:10:00Z",
+      status: "critical" as BinStatus,
+    },
+  ],
+  alerts: [
+    {
+      binId: "bin-002",
+      message: "Bin almost full. Please empty soon.",
+      timestamp: "2025-06-18T08:05:00Z",
+    },
+    {
+      binId: "bin-005",
+      message: "Critical bin status detected. Immediate action required.",
+      timestamp: "2025-06-18T08:20:00Z",
+    },
+    {
+      binId: "bin-008",
+      message: "Overflow imminent. Send response team.",
+      timestamp: "2025-06-18T08:35:00Z",
+    },
+    {
+      binId: "bin-010",
+      message: "Bin exceeded 85%. Consider cleanup.",
+      timestamp: "2025-06-18T08:45:00Z",
+    },
+    {
+      binId: "bin-015",
+      message: "Urgent: bin may overflow within the hour.",
+      timestamp: "2025-06-18T09:10:00Z",
+    },
+  ],
+  summary: {
+    totalBins: 15,
+    binsFull: 5,
+    binsWarning: 5,
+    binsNormal: 5,
+    avgFullness: 60.9,
+  },
+};
