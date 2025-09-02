@@ -70,7 +70,38 @@ This comprehensive solution addresses inefficiencies in traditional waste manage
   - Temperature and humidity  
   - RFID UID  
   - Image classification result (if enabled)  
-- All values are sent as float or string entries for real-time tracking  
+- All values are sent as float or string entries for real-time tracking
+---
+
+### 🤖 Machine Learning Model & Route Optimization  
+
+#### 🧮 Predictive Bin Fill Classification  
+A **machine learning model** was developed to predict how long it takes for a bin to become full, allowing waste services to anticipate pickups.  
+
+- **Dataset**: [Netvox R718x Bin Sensor dataset](https://melbournetestbed.opendatasoft.com/explore/dataset/netvox-r718x-bin-sensor/table/?disjunctive.dev_id) (≈172k datapoints after preprocessing).  
+- **Preprocessing**:  
+  - Removed nulls/outliers  
+  - Extracted time-based features (`hour`, `weekday`, `season`)  
+  - Engineered a `time_to_full` column → bucketed into 4 fill-time classes  
+- **Model**:  
+  - Tested multiple algorithms → **Random Forest Classifier** performed best  
+  - Tuned hyperparameters and exported as `bin_urgency_rf_pipeline.pkl`  
+- **Integration**:  
+  - Connected to **Firebase** using `firebase_admin`  
+  - Live IoT data is passed to the model  
+  - Predictions (bin urgency) are written back to Firebase under `/prediction/urgency`  
+
+#### 🚚 Route Optimization  
+- Combines **predicted urgency** + **GPS coordinates** to prioritize bins  
+- Optimized routes generated via:  
+  - Graph algorithms (e.g., Dijkstra’s, A*)  
+  - Or **Google Maps Distance Matrix API**  
+- Ensures only high-priority bins are serviced  
+
+**✨ Benefits:**  
+- Proactive collection before bins overflow  
+- Lower fuel consumption & operational costs  
+- Smarter and scalable waste management system
 
 ---
 
