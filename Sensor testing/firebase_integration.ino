@@ -213,6 +213,30 @@ SensorData collectSensorData() {
   return data;
 }
 
+String getAlertMessage(String status) {
+  if (status == "FULL") {
+    return "Waste bin " + binID + " is full and needs collection";
+  } else if (status == "GAS_ALERT") {
+    return "Gas detected in waste bin " + binID + " - immediate attention required";
+  }
+  return "Alert for bin " + binID;
+}
+
+void sendAlert(SensorData data) {
+  FirebaseJson alertJson;
+  alertJson.set("binID", binID);
+  alertJson.set("alertType", data.binStatus);
+  alertJson.set("message", getAlertMessage(data.binStatus));
+  alertJson.set("timestamp", data.timestamp);
+  alertJson.set("priority", data.binStatus == "GAS_ALERT" ? "HIGH" : "MEDIUM");
+  alertJson.set("resolved", false);
+
+  String alertPath = "/alerts/" + String(data.timestamp);
+  if (Firebase.setJSON(fbdo, alertPath.c_str(), alertJson)) {
+    Serial.println("🚨 Alert sent to Firebase");
+  }
+}
+
 void sendDataToFirebase(SensorData data) {
   if (!Firebase.ready() || !signupOK) {
     Serial.println("Firebase not ready");
@@ -261,30 +285,6 @@ void sendDataToFirebase(SensorData data) {
   if (data.binStatus == "FULL" || data.binStatus == "GAS_ALERT") {
     sendAlert(data);
   }
-}
-
-void sendAlert(SensorData data) {
-  FirebaseJson alertJson;
-  alertJson.set("binID", binID);
-  alertJson.set("alertType", data.binStatus);
-  alertJson.set("message", getAlertMessage(data.binStatus));
-  alertJson.set("timestamp", data.timestamp);
-  alertJson.set("priority", data.binStatus == "GAS_ALERT" ? "HIGH" : "MEDIUM");
-  alertJson.set("resolved", false);
-
-  String alertPath = "/alerts/" + String(data.timestamp);
-  if (Firebase.setJSON(fbdo, alertPath.c_str(), alertJson)) {
-    Serial.println("🚨 Alert sent to Firebase");
-  }
-}
-
-String getAlertMessage(String status) {
-  if (status == "FULL") {
-    return "Waste bin " + binID + " is full and needs collection";
-  } else if (status == "GAS_ALERT") {
-    return "Gas detected in waste bin " + binID + " - immediate attention required";
-  }
-  return "Alert for bin " + binID;
 }
 
 void printSensorData(SensorData data) {
