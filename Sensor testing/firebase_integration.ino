@@ -244,17 +244,17 @@ void sendDataToFirebase(SensorData data) {
   String currentPath = "/smartWasteBins/" + binID + "/currentData";
   
   if (Firebase.setJSON(fbdo, currentPath.c_str(), json)) {
-    Serial.println("✅ Current data sent to Firebase successfully");
+    Serial.println("Current data sent to Firebase successfully");
     
     // Also add to historical data (only if RFID detected or significant change)
     if (data.rfidTag != "" || data.binStatus == "FULL" || data.binStatus == "GAS_ALERT") {
       String historyPath = "/smartWasteBins/" + binID + "/history/" + String(data.timestamp);
       Firebase.setJSON(fbdo, historyPath.c_str(), json);
-      Serial.println("📊 Data logged to history");
+      Serial.println("Data logged to history");
     }
     
   } else {
-    Serial.printf("❌ Failed to send data: %s\n", fbdo.errorReason().c_str());
+    Serial.printf("Failed to send data: %s\n", fbdo.errorReason().c_str());
   }
 
   // Send alert if bin is full or gas detected
