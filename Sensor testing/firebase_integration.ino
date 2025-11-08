@@ -8,12 +8,12 @@
 #include <ArduinoJson.h>
 
 // Wi-Fi & Firebase
-#define WIFI_SSID "Elora"
-#define WIFI_PASSWORD "mandy2007"
+#define WIFI_SSID "wifi_name"
+#define WIFI_PASSWORD "password"
 #define API_KEY "AIzaSyB0r3jMrDJB3qkqo68h1Tkwnh2Qo5TKfsk"
 #define DATABASE_URL "https://smart-gps-tracker-4bef3-default-rtdb.firebaseio.com/"
-#define USER_EMAIL "yuribenjamins24@gmail.com"
-#define USER_PASSWORD "2Burner2024"
+#define USER_EMAIL "email"
+#define USER_PASSWORD "password"
 
 FirebaseData fbdo;
 FirebaseAuth auth;
