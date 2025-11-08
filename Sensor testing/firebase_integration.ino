@@ -139,7 +139,7 @@ float readUltrasonic() {
   float distance = duration * 0.034 / 2;  // Distance in cm
   
   // Filter out invalid readings
-  if (distance < 2 || distance > 400) {
+  if (distance < 2 || distance > binHeight) {
     return -1; // Invalid reading
   }
   
