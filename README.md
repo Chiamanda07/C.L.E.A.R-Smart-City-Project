@@ -18,7 +18,6 @@ This comprehensive solution addresses inefficiencies in traditional waste manage
 
 ### 🎯 Project Objectives
 - Accurately monitor bin status in real-time using multi-sensor input  
-- Classify waste types using camera and AI (plastic, organic, metal)  
 - Alert authorities on gas levels, overflow risk, and fill percentages  
 - Transmit data securely to Firebase and visualize on a web dashboard  
 - Enable route optimization through AI prediction of bin fill levels  
@@ -30,17 +29,13 @@ This comprehensive solution addresses inefficiencies in traditional waste manage
 
 #### 🔧 Hardware
 - **Microcontroller**:  
-  - ESP32 Dev Board  
-  - ESP32-CAM  
+  - ESP32 Dev Board
+    
 - **Sensors**:  
   - HC-SR04 (Ultrasonic Distance Sensor)  
-  - MQ-135 (Air Quality / Gas Sensor)  
-  - HX711 + Load Cell (Weight Measurement)  
+  - MQ-135 (Air Quality / Gas Sensor)    
   - NEO-6M GPS Module  
   - RC522 RFID Module  
-  - DHT22 (Temperature & Humidity Sensor)  
-  - ESP32-CAM + TensorFlow Lite (for AI-based waste classification)  
-
 ---
 
 ### 🔌 Wiring & Testing
